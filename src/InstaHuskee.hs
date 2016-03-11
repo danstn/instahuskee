@@ -22,6 +22,9 @@ credentials = Credentials (pack "CLIENT_ID") (pack "CLIENT_SECRET")
 
 -- Authenticated actions --
 
+getAuthURL :: IO Text
+getAuthURL = runIGAction $ getUserAccessTokenURL1 redirectUri []
+
 getAuthToken :: IO OAuthToken
 getAuthToken = runIGAction $ getUserAccessTokenURL2 redirectUri code
 
