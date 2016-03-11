@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module InstaHuskee (getAuthToken) where
+module InstaHuskee where
 
 import           Data.Text
 import           Network.HTTP.Client
