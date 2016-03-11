@@ -26,6 +26,8 @@ library
                      , ig
   default-language:    Haskell2010
   ghc-options:         -Wall -W
+  default-extensions:  RankNTypes
+                     , KindSignatures
 
 executable instahuskee-exe
   hs-source-dirs:      app

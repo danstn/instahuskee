@@ -30,7 +30,7 @@ getAuthToken = runIGAction $ getUserAccessTokenURL2 redirectUri code
 runIGAction :: InstagramT (ResourceT IO) a -> IO a
 runIGAction = runResourceT . runInstagramFn
 
-runInstagramFn :: (MonadBaseControl IO m, MonadResource m) => InstagramT m b -> m b
+runInstagramFn :: forall b (m :: * -> *) . (MonadBaseControl IO m, MonadResource m) => InstagramT m b -> m b
 runInstagramFn igAction = do
   manager <- liftIO $ newManager tlsManagerSettings
   runInstagramT credentials manager igAction
