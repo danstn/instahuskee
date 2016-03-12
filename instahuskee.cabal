@@ -20,10 +20,9 @@ library
                      , text
                      , http-client
                      , http-client-tls
-                     , http-types
-                     , transformers
                      , resourcet
                      , ig
+                     , mtl
   default-language:    Haskell2010
   ghc-options:         -Wall -W
   default-extensions:  RankNTypes

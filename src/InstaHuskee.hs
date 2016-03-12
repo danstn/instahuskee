@@ -3,11 +3,24 @@
 module InstaHuskee where
 
 import           Data.Text
+
 import           Network.HTTP.Client
 import           Network.HTTP.Client.TLS (tlsManagerSettings)
+
+import           Control.Monad.Reader
 import           Control.Monad.Trans.Resource
-import           Control.Monad.IO.Class
+
 import           Instagram
+
+--------------------------------------------------------------------------------
+
+type Config = String
+type AppM a = InstagramT (ResourceT IO) a
+
+--------------------------------------------------------------------------------
+
+runApp :: (MonadReader Config m, MonadIO m) => AppM a -> m a
+runApp = undefined
 
 -- To be parametrised/read from the environment
 
@@ -30,7 +43,7 @@ getAuthToken = runIGAction $ getUserAccessTokenURL2 redirectUri code
 
 -- Mechanics --
 
-runIGAction :: InstagramT (ResourceT IO) a -> IO a
+runIGAction :: AppM a -> IO a
 runIGAction = runResourceT . runInstagramFn
 
 runInstagramFn :: forall b (m :: * -> *) . (MonadBaseControl IO m, MonadResource m) => InstagramT m b -> m b
