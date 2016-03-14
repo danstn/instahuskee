@@ -3,6 +3,7 @@
 module InstaHuskee where
 
 import           Data.Text
+import           Data.Default (def)
 
 import           Network.HTTP.Client
 import           Network.HTTP.Client.TLS (tlsManagerSettings)
@@ -34,6 +35,9 @@ credentials :: Credentials
 credentials = Credentials (pack "CLIENT_ID") (pack "CLIENT_SECRET")
 
 -- Authenticated actions --
+
+getRecentMediaByTag :: Text -> OAuthToken -> IO (Envelope [Media])
+getRecentMediaByTag tag token = runIGAction $ getRecentTagged tag (Just token) def
 
 getAuthURL :: IO Text
 getAuthURL = runIGAction $ getUserAccessTokenURL1 redirectUri []
