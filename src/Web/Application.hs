@@ -1,7 +1,7 @@
 module Web.Application (run) where
 
 import           Yesod
-import           Web.Router (InstaHuskeeWeb(..))
+import           Web.Router (App(..))
 
 run :: IO ()
-run = warp 3000 InstaHuskeeWeb
+run = warp 3000 App
