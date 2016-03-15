@@ -25,19 +25,24 @@ instance Yesod App
 -- type Handler Html = HandlerT App IO Html
 
 getHomeR :: Handler Html
-getHomeR =
-  defaultLayout [whamlet|
-                Routes:
-                <a href=@{AuthR}>Authenticate
-                <a href=@{DashboardR}>Dashboard
+getHomeR = defaultLayout $ do
+  setTitle "Root"
+  toWidget [whamlet|
+           Routes:
+           <a href=@{AuthR}>Authentication
+           <a href=@{DashboardR}>Dashboard
   |]
 
 getAuthR :: Handler Html
-getAuthR = defaultLayout [whamlet|
-                         Authenticating...
+getAuthR = defaultLayout $ do
+  setTitle "Authentication"
+  toWidget [whamlet|
+           <a href="#">Authenticate me!
   |]
 
 getDashboardR :: Handler Html
-getDashboardR = defaultLayout [whamlet|
-                              Dashboard
+getDashboardR = defaultLayout $ do
+  setTitle "Dashboard"
+  toWidget[whamlet|
+          Dashboard
   |]
