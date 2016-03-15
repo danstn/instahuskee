@@ -4,23 +4,25 @@
 {-# LANGUAGE TypeFamilies          #-}
 
 module Web.Router (
-  InstaHuskeeWeb(..)
+  Widget,
+  App(..),
+  resourcesApp
   ) where
 
 import           Yesod
 
-data InstaHuskeeWeb = InstaHuskeeWeb
+data App = App
 
-mkYesod "InstaHuskeeWeb" [parseRoutes|
+mkYesod "App" [parseRoutes|
 /            HomeR        GET
 /auth        AuthR        GET
 /dashboard   DashboardR   GET
 |]
 
-instance Yesod InstaHuskeeWeb
+instance Yesod App
 
 -- Handlers
--- type Handler Html = HandlerT InstaHuskeeWeb IO Html
+-- type Handler Html = HandlerT App IO Html
 
 getHomeR :: Handler Html
 getHomeR =
