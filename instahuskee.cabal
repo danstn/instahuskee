@@ -16,6 +16,8 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     InstaHuskee
+                     , Web.Application
+                     , Web.Router
   build-depends:       base >= 4.7 && < 5
                      , text
                      , http-client
@@ -24,6 +26,7 @@ library
                      , ig
                      , mtl
                      , data-default
+                     , yesod
   default-language:    Haskell2010
   ghc-options:         -Wall -W
   default-extensions:  RankNTypes
