@@ -4,4 +4,4 @@ import           Yesod
 import           Web.Router (App(..))
 
 run :: IO ()
-run = warp 3000 App
+run = warp 4242 App

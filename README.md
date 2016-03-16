@@ -1,4 +1,4 @@
-# InstaHuskee 
+# InstaHuskee
 
 An opinionated wrapper around https://hackage.haskell.org/package/ig
 
@@ -17,9 +17,9 @@ stack repl
 > run
 ```
 
-Will start a server listening on port 3000.
+Will start a server listening on port 4242.
 
 **Check it**
 
-[http://localhost:3000](http://localhost:3000)
+[http://localhost:4242](http://localhost:4242)
 
