@@ -25,16 +25,13 @@ runApp = undefined
 
 -- To be parametrised/read from the environment
 
-code :: Text
-code = pack "YOUR_CODE"
-
 redirectUri :: RedirectUri
 redirectUri = pack "http://example.com/auth/ig"
 
 credentials :: Credentials
 credentials = Credentials (pack "CLIENT_ID") (pack "CLIENT_SECRET")
 
--- Authenticated actions --
+-- Top-level API
 
 getRecentMediaByTag :: Text -> OAuthToken -> IO (Envelope [Media])
 getRecentMediaByTag tag token = runIGAction $ getRecentTagged tag (Just token) def
@@ -42,8 +39,8 @@ getRecentMediaByTag tag token = runIGAction $ getRecentTagged tag (Just token) d
 getAuthURL :: IO Text
 getAuthURL = runIGAction $ getUserAccessTokenURL1 redirectUri []
 
-getAuthToken :: IO OAuthToken
-getAuthToken = runIGAction $ getUserAccessTokenURL2 redirectUri code
+getAuthToken :: Text -> IO OAuthToken
+getAuthToken code = runIGAction $ getUserAccessTokenURL2 redirectUri code
 
 -- Mechanics --
 
