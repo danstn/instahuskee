@@ -1,10 +1,12 @@
 # InstaHuskee
 
-An opinionated wrapper around https://hackage.haskell.org/package/ig
+An opinionated wrapper around https://hackage.haskell.org/package/ig with a Yesod UI.
 
 _Note : This is WIP❗_
 
 ## Web Module
+
+### Running
 
 **Run [Stack](http://docs.haskellstack.org/en/stable/README/) repl**
 ```bash
@@ -22,4 +24,8 @@ Will start a server listening on port 4242.
 **Check it**
 
 [http://localhost:4242](http://localhost:4242)
+
+### Routes
+
+[/auth](http://localhost:4242/auth) - authentication route (your credentials have to be set correctly for this to work)
 
