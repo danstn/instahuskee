@@ -42,6 +42,9 @@ getAuthURL = runIGAction $ getUserAccessTokenURL1 redirectUri []
 getAuthToken :: Text -> IO OAuthToken
 getAuthToken code = runIGAction $ getUserAccessTokenURL2 redirectUri code
 
+likeMedia :: MediaID -> OAuthToken -> IO (Envelope NoResult)
+likeMedia mediaId token = runIGAction $ like mediaId token
+
 -- Mechanics --
 
 runIGAction :: AppM a -> IO a
